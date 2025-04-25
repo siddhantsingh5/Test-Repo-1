@@ -20,8 +20,6 @@
  
 
 > new_cm <- TBM_CM %>% select(Study,Site,Subject,CMTRT,CMCAT,CMSTDTC,CMENDTC,CMSTDAT,CMENDAT,VisitGroupIndex,FormIndex,ItemGroupIndex,VisitName) 
-
-# PRACTICING JOIN
  
 
 > new_vscm<- full_join(new_cm,new_vs,by=c('Subject','Site','VisitName','VisitGroupIndex','FormIndex','ItemGroupIndex')) 
@@ -54,7 +52,7 @@
 > new_vscm2 <-  new_vscm2%>% mutate(VSdate = as.Date(VSDTC)) 
  
 
- #ADDING FLAG BASED ON CONDITIONS
+ 
 
 > new_vscm2 <- new_vscm2%>% mutate(Conflag = ifelse(Conflag=='Y' & VSdate>=Startdate & VSdate<=Enddate, 'Y','N')) 
  
